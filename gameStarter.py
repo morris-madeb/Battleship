@@ -11,7 +11,7 @@ __________         __    __  .__                .__    .__
  |______  /(____  /__|  |__| |____/\___  >____  >___|  /__|   __/ 
         \/      \/                     \/     \/     \/   |__|    
                   
-                  by Isaac Schertz and Morris Madeb
+                  by Morris Madeb and Isaac Schertz
                   
                     press enter to begin the game\n"""
 
