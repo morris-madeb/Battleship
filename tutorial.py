@@ -23,7 +23,7 @@ PLACING A SHIP: Before the game begins, you will be prompted
                 where the piece will start.
                 
                 example:
-                if Isaac places a carrier ship in position a1, and the 
+                if Isaac places a carrier ship in position a1 and the 
                 orientation is horizontal the board will look 
                 like this:
                 0   1   2   3   4   5   6   

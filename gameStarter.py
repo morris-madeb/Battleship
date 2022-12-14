@@ -1,3 +1,4 @@
+# imports nessecary libraries
 import os
 import gameLogic
 import player
@@ -26,13 +27,13 @@ def start():
   p1 = player.Player(input(board.HEADER + "\nwhat is player 1's name?\n"))
   while len(p1.name) < 1:
     os.system("clear")
-    p1 = player.Player(input(board.HEADER + "\nName is invalid\nwhat is player 1's name?\n"))
+    p1 = player.Player(input(board.HEADER + "\nName is invalid\nwhat is player 1's name?\n").strip())
 
   os.system("clear")
   p2 = player.Player(input(board.HEADER + "\nwhat is player 2's name?\n"))
   while len(p2.name) < 1 or p1.name == p2.name:
     os.system("clear")
-    p2 = player.Player(input(board.HEADER + "\nName is invalid\nwhat is player 2's name?\n"))
+    p2 = player.Player(input(board.HEADER + "\nName is invalid\nwhat is player 2's name?\n").strip())
 
   # prints game logo and begins the game until it ends, then asks to play again
   while True:
@@ -40,13 +41,14 @@ def start():
     print(START_LOGO)
     input()
     os.system("clear")
-    
+
+    # starts the game with player 1 and player 2
     gameLogic.Battleship(p1, p2)
+
+    # once the game ends, it asks if the users would like to play again
     endGame = ""
-    while endGame not in ["y", "n"]:
+    while endGame.upper() not in ["Y", "N"]:
       endGame = input("would you like to play again? (y/n)\n")
-    if endGame == "n":
+    if endGame.upper() == "N":
       break
-# Start menu with a title
-# take input to begin game
-# want to be able to play an infinite amount of games
+# play an infinite amount of games 
