@@ -47,19 +47,25 @@ class Battleship():
     os.system("clear")
 
     # if the game is not won yet
+    print(board.HEADER, end= "")
     while not self.__winStatus(): 
-      print(board.HEADER + "\nit's " + self.pArray[self.curPlayer].name + "'s turn")
+      print("\nIt's " + self.pArray[self.curPlayer].name + "'s turn")
       input("Take the computer so your opponent can't cheat!\nPress enter to continue")
       os.system("clear")
       # player can guess until they miss or they win
       while self.__actionCheck(action) == 0 and self.tStatus and not self.__winStatus():
         
-        print(board.HEADER + "\nit's " + self.pArray[self.curPlayer].name + "'s turn")
+        print(board.HEADER + "\nIt's " + self.pArray[self.curPlayer].name + "'s turn")
         self.PBArray[self.curPlayer].printBoard(self.PBArray[self.curPlayer].guessBoard)
         action = input("what square would you like to guess?\n")
       # if the player misses, end turn and print final guess board for BOTH players to see
-      print(board.HEADER + "\nFinal Guess board for " + self.pArray[self.curPlayer].name)
-      self.PBArray[self.curPlayer].printBoard(self.PBArray[self.curPlayer].guessBoard)
+      if not self.__winStatus():
+        os.system("clear")
+        print(board.HEADER + "\nMISS! Lose Your Turn!\npress enter to see the final guess board\nand pass computer to your opponent")
+        input()
+        os.system("clear")
+        print(board.HEADER + "\nFinal Guess board for " + self.pArray[self.curPlayer].name)
+        self.PBArray[self.curPlayer].printBoard(self.PBArray[self.curPlayer].guessBoard)
       
       if not self.__winStatus():
         self.curPlayer = (self.curPlayer + 1) % 2
@@ -69,9 +75,9 @@ class Battleship():
     # once someone wins, add w to winning player and l to losing player and print out their w/l ratios and w percentage
     os.system("clear")
     self.curPlayer = (self.curPlayer + 1) % 2
-    self.pArray[self.curPlayer].addW()
-    self.curPlayer = (self.curPlayer + 1) % 2
     self.pArray[self.curPlayer].addL()
+    self.curPlayer = (self.curPlayer + 1) % 2
+    self.pArray[self.curPlayer].addW()
     print(board.HEADER + "\n" + self.pArray[self.curPlayer].name + " is our winner! congratulations!\n\nPlayer stats:\n" + self.pArray[0].__str__() + "\n" + self.pArray[1].__str__())
 
   # initializes the game by taking in the two players, creating new boards for each to setup, and getting other variables prepared for gameplay
